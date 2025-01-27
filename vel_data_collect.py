@@ -13,7 +13,8 @@ bot = DiffDriveController(left_ids=((2, 3, 4), (20, 21)), right_ids=((6, 7, 8), 
 
 ref_vels = ((0.5, 0.), (0.75, pi / 8), (0.4, 0.), (0.35, -pi / 4), (0., -2 * pi / 3), (-0.35, -pi / 4), (-0.4, 0.), (-0.75, pi / 8), (-0.5, 0.), (0., 2 * pi / 3))
 # Variables
-data = []
+targ_vel_data = []
+real_vel_data = []
 
 # LOOP
 sleep(1)  # get your robot ready!
@@ -26,10 +27,12 @@ for i in range(400):  # 20Hz controller, 20 seconds
         # print(targ_vel)
         bot.set_vel(*targ_vel)
     sleep(0.05)
-    print(bot.lin_vel, bot.ang_vel)
+    # print(bot.lin_vel, bot.ang_vel)
+    targ_vel_data.append(targ_vel)
+    real_vel_data.append((bot.lin_vel, bot.ang_vel))
 
 bot.set_vel(0., 0.)
 ### UNCOMMENT FOLLOWING 3 LINES WHEN SATISFIED WITH PID GAINS ###
-# with open(f'data{target_vel}.csv', 'w') as file:
-#     for item in data:
-#         file.write(f'{item[0]},{item[1]}\n')
+with open(f'vel_data.csv', 'w') as file:
+    for i in range(len(targ_vel_data)):
+        file.write(f'{targ_vel_data[i][0]},{targ_vel_data[i][1]},{real_vel_data[i][0]},{real_vel_data[i][1]}\n')
