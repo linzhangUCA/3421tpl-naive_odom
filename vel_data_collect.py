@@ -11,23 +11,22 @@ from math import pi
 # Instantiate wheel
 bot = DiffDriveController(left_ids=((2, 3, 4), (20, 21)), right_ids=((6, 7, 8), (10, 11)))
 
-ref_vels = ((0.5, 0.), (0.75, pi / 8), (0.35, -pi / 4), (0., -pi / 2), (-0.35, -pi / 4), (-0.75, pi / 8), (-0.5, 0.), (0., pi / 2))
+ref_vels = ((0.5, 0.), (0.75, pi / 8), (0.4, 0.), (0.35, -pi / 4), (0., -2 * pi / 3), (-0.35, -pi / 4), (-0.4, 0.), (-0.75, pi / 8), (-0.5, 0.), (0., 2 * pi / 3))
 # Variables
-err = 0.0
-err_sum = 0.0
-err_diff = 0.0
-prev_err = 0.0
-target_vel = 0.0
 data = []
 
 # LOOP
-sleep(3)  # get your robot ready!
-for i in range(320):  # 20Hz controller, 16 seconds
+sleep(1)  # get your robot ready!
+targ_vel = ref_vels[0]
+bot.set_vel(*targ_vel)
+for i in range(400):  # 20Hz controller, 20 seconds
     if not (i + 1) % 40:
-        targ_vel = ref_vels[int((i + 1) / 40) - 1]
-        print(targ_vel)
+        if i < 399:
+            targ_vel = ref_vels[int((i + 1) / 40)]
+        # print(targ_vel)
         bot.set_vel(*targ_vel)
     sleep(0.05)
+    print(bot.lin_vel, bot.ang_vel)
 
 bot.set_vel(0., 0.)
 ### UNCOMMENT FOLLOWING 3 LINES WHEN SATISFIED WITH PID GAINS ###
