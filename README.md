@@ -8,6 +8,15 @@
 
 ## Requirements
 
+### 1. (40%) Collect Velocity Data (Pico MicroPython)
+
+Run [vel_data_collect.py](vel_data_collect.py) to drive your robot.
+Uncomment the last 3 lines, store the target and actual velocity data on your Pico.
+
+- (10%) Upload the saved data to [data](/data/) directory in this repository.
+
+### 2. (60%) Mean Squared Error Evaluation (RPi Local Python)
+
 Complete the provided python scripts.
 Code the sections wrapped by the following comments.
 
@@ -16,16 +25,6 @@ Code the sections wrapped by the following comments.
 
 ### END CODING HERE ###
 ```
-
-### 1. (40%) Collect PID Control Data (Pico MicroPython)
-
-Complete [pid_sine_test.py](pid_sine_test.py) to achieve following goals.
-
-1. (30%) Tune PID gains so that the actual velocity can approach to the target as quickly and closely as possible.
-2. (10%) Store the data from the best performed controller (see next section for criterion) by uncommenting the last 3 lines in [pid_sine_test.py](pid_sine_test.py).
-Upload the saved data to [data](/data/) directory in this repository.
-
-### 2. (60%) Mean Squared Error Evaluation (RPi Local Python)
 
 Mean squared error (MSE) is a metric used to measure the average squared difference between two variables.
 We can employ such a metric to measure the difference between the wheel's target velocity and actual velocity.
