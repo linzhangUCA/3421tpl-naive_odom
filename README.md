@@ -13,9 +13,9 @@
 Run [vel_data_collect.py](vel_data_collect.py) to drive your robot.
 Uncomment the last 3 lines, store the target and actual velocity data on your Pico.
 
-- (10%) Upload the saved data to [data](/data/) directory in this repository.
+- (40%) Upload the saved data to [data](/data/) directory in this repository.
 
-### 2. (60%) Mean Squared Error Evaluation (RPi Local Python)
+### 2. (60%) Plot Trajectories
 
 Complete the provided python scripts.
 Code the sections wrapped by the following comments.
