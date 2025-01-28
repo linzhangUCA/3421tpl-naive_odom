@@ -6,12 +6,12 @@ import sys
 import os
 import csv
 import matplotlib.pyplot as plt
-from math import sin, cos
+from math import pi, sin, cos
 
 # Extract data
 data_dir = os.path.join(sys.path[0], "data")
 ### START CODING HERE ### ~ 1 line
-data_file = os.path.join(data_dir, "example_velocity_data.csv")  # use your own data
+data_file = os.path.join(data_dir, "example_data.csv")  # use your own data
 ### END CODING HERE ###
 with open(data_file, newline="") as f:
     reader = csv.reader(f)
@@ -67,6 +67,21 @@ for i in range(len(vel_log)):
 # yticks = [0] * 20
 # for i in range(20):
 #     yticks[i] = i * 0.1 - 1
+
+
+ref_vels = (
+    (0.5, 0.0),
+    (0.5, pi / 8),
+    (0.4, 0.0),
+    (0.35, -pi / 4),
+    (0.0, -2 * pi / 3),
+    (-0.35, -pi / 4),
+    (-0.4, 0.0),
+    (-0.5, pi / 8),
+    (-0.5, 0.0),
+    (0.0, 2 * pi / 3),
+)
+
 fig, ax = plt.subplots(figsize=(10, 10))
 ax.scatter(targ_xs, targ_ys)
 ax.scatter(real_xs, real_ys)
