@@ -37,53 +37,64 @@ for i in range(len(real_vels)):
     targ_vels.append(ref_vels[int(i / 40)])
 print(len(targ_vels))
 
-
+# Calculate trajectory
 x, y, th = [0], [0], [0]
 x_hat, y_hat, th_hat = [0], [0], [0]
 dt = 0.05  # seconds
 for i in range(len(targ_vels)):
+    ### START CODING HERE ### ~ 3 lines
     # Compute ideal trajectory
     dx = targ_vels[i][0] * cos(th[-1]) * dt
     dy = targ_vels[i][0] * sin(th[-1]) * dt
     dth = targ_vels[i][1] * dt
+    ### END CODING HERE ###
     x.append(x[-1] + dx)
     y.append(y[-1] + dy)
     th.append(th[-1] + dth)
+    ### START CODING HERE ### ~ 3 lines
     # Compute actual trajectory
     dx_hat = real_vels[i][0] * cos(th_hat[-1]) * dt
     dy_hat = real_vels[i][0] * sin(th_hat[-1]) * dt
     dth_hat = real_vels[i][1] * dt
+    ### END CODING HERE ###
     x_hat.append(x_hat[-1] + dx_hat)
     y_hat.append(y_hat[-1] + dy_hat)
     th_hat.append(th_hat[-1] + dth_hat)
 
 # Plot data
-# ts = list(range(len(data)))  # create timestamps for x axis
-# for i in range(len(data)):
-#     ts[i] = 0.05 * i
 # xticks = [0] * 21
 # for i in range(21):
 #     xticks[i] = i
 # yticks = [0] * 20
 # for i in range(20):
 #     yticks[i] = i * 0.1 - 1
-fig, ax = plt.subplots(figsize=(10, 10))
-ax.scatter(x, y)
-ax.scatter(x_hat, y_hat)
-# ax[0].plot(ts, targ_v, "#7C878E", linewidth=2)
-# ax[0].plot(ts, real_v, "#582C83", linewidth=1.5)
-# ax[0].set_ylabel("Velocity (m/s)")
-# ax[0].set_xlim([0, 20.5])
-# ax[0].set_ylim([-0.95, 0.95])
-# ax[0].set_xticks(xticks)
-# ax[0].set_yticks(yticks)
-# ax[0].grid()
-ax.legend(["target", "actual"])
-# ax[1].plot(ts, err, "r")
-# ax[1].set_xlabel("Time Stamps (s)")
-# ax[1].set_ylabel("Error (m/s)")
-# ax[1].set_ylim([-0.4, 0.4])
-# plt.grid()
+fig, ax = plt.subplots(1, 2, figsize=(16, 8))
+# plt.rcParams["text.usetex"] = True
+# Plot position trajectory
+ax[0].scatter(x, y)
+ax[0].scatter(x_hat, y_hat, marker="+")
+ax[0].set_xlabel("X (m)")
+ax[0].set_ylabel("Y (m)")
+ax[0].set_xlim([-0.25, 3.25])
+ax[0].set_ylim([-0.25, 3.25])
+ax[0].grid()
+ax[0].legend(["target", "actual"])
+# Plot orientation traj
+ts = list(range(len(x)))  # create timestamps for x axis
+for i in range(len(x)):
+    ts[i] = 0.05 * i
+ax[1].plot(ts, th, ".", markersize="10")
+ax[1].plot(ts, th_hat, "+", markersize="5")
+ax[1].set_xlabel("T (s)")
+ax[1].set_ylabel("θ (radians)")
+ax[1].set_xlim([-0.25, 20.25])
+ax[1].set_ylim([-pi * 2.5, pi])
+ax[1].grid()
+ax[1].legend(["target", "actual"])
+# Title
+### CHOOSE APPROPRIATE TITLE FROM FOLLOWING 2 LINES ###
+fig.suptitle("Trajectory Compare - Lifted", fontsize=16)
+# fig.suptitle("Trajectory Compare - Ground", fontsize=16)
 plt.show()
-### UNCOMMENT FOLLOWING LINE WHEN SATISFIED WITH PID GAINS AND MSE VALUE ###
-# plt.savefig('pid_eval.png'))
+### UNCOMMENT FOLLOWING LINE TO SAVE THE FIGURE, RENAME IT IF NECESSARY ###
+# plt.savefig('trajectory.png'))
