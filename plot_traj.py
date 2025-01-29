@@ -18,7 +18,7 @@ with open(data_file, newline="") as f:
     vel_data = tuple(reader)
 real_vels = []
 for vd in vel_data:
-    real_vels.append([float(vd[0]), float(vd[1])])
+    real_vels.append((float(vd[0]), float(vd[1])))
 # Create target velocities
 ref_vels = (
     (0.5, 0.0),
@@ -54,7 +54,7 @@ for i in range(len(targ_vels)):
     dy_hat = real_vels[i][0] * sin(th_hat[-1]) * dt
     dth_hat = real_vels[i][1] * dt
     x_hat.append(x_hat[-1] + dx_hat)
-    y_hat.append(x_hat[-1] + dy_hat)
+    y_hat.append(y_hat[-1] + dy_hat)
     th_hat.append(th_hat[-1] + dth_hat)
 
 # Plot data
