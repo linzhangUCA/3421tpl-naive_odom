@@ -62,14 +62,7 @@ for i in range(len(targ_vels)):
     th_hat.append(th_hat[-1] + dth_hat)
 
 # Plot data
-# xticks = [0] * 21
-# for i in range(21):
-#     xticks[i] = i
-# yticks = [0] * 20
-# for i in range(20):
-#     yticks[i] = i * 0.1 - 1
 fig, ax = plt.subplots(1, 2, figsize=(16, 8))
-# plt.rcParams["text.usetex"] = True
 # Plot position trajectory
 ax[0].scatter(x, y)
 ax[0].scatter(x_hat, y_hat, marker="+")
