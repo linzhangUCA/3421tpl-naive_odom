@@ -59,12 +59,24 @@ $\omega_i$ is positive if the direction is counterclockwise.
 At instant $t_i$, the translation of the robot can be expressed as:
 ```math
 \Delta X_i = v_i cos \theta_i \Delta t
+```
+```math
 \Delta Y_i = v_i sin \theta_i \Delta t
+```
+And the change of orientation should be:
+```math
+\Delta \theta_i = \omega_i \Delta t
+
 ```
 Therefore, the robot's new pose at $t_{i+1}$ can be calculated as:
 ```math
 X_{i+1} = X_i + \Delta X_i
+```
+```math
 Y_{i+1} = Y_i + \Delta Y_i
+```
+```math
+\theta_{i+1} = \theta_i + \Delta \theta_i
 ```
 
 #### Install Matplotlib
