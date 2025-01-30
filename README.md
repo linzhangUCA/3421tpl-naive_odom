@@ -46,11 +46,26 @@ The Global frame will be generated according to the initial pose of the robot. T
 
 #### Robot's State of Motion
 
-- The robot's motion will be restricted in the $\{X, Y\}$ plane, which is two dimensional.
+- The robot's motion will be restricted in the two dimensional $\{X, Y\}$ plane.
 - The robot will start moving at the moment of $t_0$, and end the motion at the instant of $t_T$.
-- The robot's state will be examined every 0.05 seconds, hence the $i$-th instant $t_i = t_{i-1} + 0.05$ (where $i \in \{1, 2, \dots, T\}$).
-- The robot's pose at the $i$-th instant can be represented as $(X_i, Y_i, \theta_i)$ w.r.t. the global frame.
-- The robot's velocity at the $i$-th instant can be represented as $(v_{xi}, \omega_i)$
+- The robot's state will be examined every $\Delta t$ seconds, hence the $i$-th instant $t_i = t_{i-1} + \Delta t$ (where $i \in \{ 1, 2, \dots, T \}$).
+- The robot's pose at the $i$-th instant can be represented as $(X_i, Y_i, \theta_i)$ referring to the global frame.
+$\theta_i$ is the angle from $X$ to $x$, with counterclockwise to be the positive direction.
+- The robot's velocity at the $i$-th instant can be represented as $(v_i, \omega_i)$.
+$v_i$ is the robot's linear velocity which is always on the $x$ axis. 
+$\omega_i$ is the robot's angular velocity which is an rotational quantity along the axis perpendicular to the $\{x, y\}$ plane. 
+$\omega_i$ is positive if the direction is counterclockwise.
+
+At instant $t_i$, the translation of the robot can be expressed as:
+```math
+\Delta X_i = v_i cos \theta_i \Delta t
+\Delta Y_i = v_i sin \theta_i \Delta t
+```
+Therefore, the robot's new pose at $t_{i+1}$ can be calculated as:
+```math
+X_{i+1} = X_i + \Delta X_i
+Y_{i+1} = Y_i + \Delta Y_i
+```
 
 #### Install Matplotlib
 
