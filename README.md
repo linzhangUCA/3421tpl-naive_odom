@@ -37,12 +37,20 @@ Tackle the following requests.
 
 There are 2 reference frames involved.
 
-1. Global frame: $\{X, Y\}$ is fixed on the driving plane and will not move along the robot.
-2. Body frame: $\{x, y\}$ is attached to the robot and will translate and rotate along the robot's movement.
+1. Body frame: $\{x, y\}$ is attached to the robot and will translate and rotate along the robot's movement.
+2. Global frame: $\{X, Y\}$ is fixed on the driving plane and will not move along the robot.
 
 The body frame's origin is sitting at the geometric center of the robot's base plate. The $x$ axis is always pointing to the head of the robot, and the $y$ axis is perpendicular to the $x$ axis and pointing to the left wheel.
 
 The Global frame will be generated according to the initial pose of the robot. The $\{X, Y\}$ frame will overlap with the initial $\{x, y\}$ frame.
+
+#### Robot's State of Motion
+
+- The robot's motion will be restricted in the $\{X, Y\}$ plane, which is two dimensional.
+- The robot will start moving at the moment of $t_0$, and end the motion at the instant of $t_T$.
+- The robot's state will be examined every 0.05 seconds, hence the $i$-th instant $t_i = t_{i-1} + 0.05$ (where $i \in \{1, 2, \dots, T\}$).
+- The robot's pose at the $i$-th instant can be represented as $(X_i, Y_i, \theta_i)$ w.r.t. the global frame.
+- The robot's velocity at the $i$-th instant can be represented as $(v_{xi}, \omega_i)$
 
 #### Install Matplotlib
 
