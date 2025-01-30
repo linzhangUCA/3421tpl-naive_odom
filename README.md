@@ -33,7 +33,6 @@ Tackle the following requests.
 
 #### Frame Setup
 
-![odom_frame](images/odom_frame.png)
 
 There are 2 reference frames involved.
 
@@ -55,15 +54,19 @@ $\theta_i$ is the angle from $X$ to $x$, with counterclockwise to be the positiv
 $v_i$ is the robot's linear velocity which is always on the $x$ axis. 
 $\omega_i$ is the robot's angular velocity which is an rotational quantity along the axis perpendicular to the $\{x, y\}$ plane. 
 $\omega_i$ is positive if the direction is counterclockwise.
+- The trajectory of the robot can be represented as a sequence of the robot's states and can be illustrated as shown in the following figure.
+```math
+\{(X_0, Y_0, \theta_0, v_0, \omega_0), (X_1, Y_1, \theta_1, v_1, \omega_1), \dots, (X_T, Y_T, \theta_T, v_T, \omega_T)\}
+```
+![odom_frame](images/odom_frame.png)
 
-At instant $t_i$, the translation of the robot can be expressed as:
+At instant $t_i$, the change of the robot's pose can be calculated *approximately* as:
 ```math
-\Delta X_i = v_i cos \theta_i \Delta t
+\Delta X_i = v_i \cos \theta_i \Delta t
 ```
 ```math
-\Delta Y_i = v_i sin \theta_i \Delta t
+\Delta Y_i = v_i \sin \theta_i \Delta t
 ```
-And the change of orientation should be:
 ```math
 \Delta \theta_i = \omega_i \Delta t
 
