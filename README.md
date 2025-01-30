@@ -47,7 +47,7 @@ The Global frame will be generated according to the initial pose of the robot. T
 
 - The robot's motion will be restricted in the two dimensional $`\{X, Y\}`$ plane.
 - The robot will start moving at the moment of $t_0$, and end the motion at the instant of $t_T$.
-- The robot's state will be examined every $\Delta t$ seconds, hence the $i$-th instant $t_i = t_{i-1} + \Delta t$ (where $i \in `\{ 1, 2, \dots, T \}`$).
+- The robot's state will be examined every $\Delta t$ seconds, hence the $i$-th instant $`t_i = t_{i-1} + \Delta t$ (where $i \in \{ 1, 2, \dots, T \}`$).
 - The robot's pose at the $i$-th instant can be represented as $(X_i, Y_i, \theta_i)$ referring to the global frame.
 $\theta_i$ is the angle from $X$ to $x$, with counterclockwise to be the positive direction.
 - The robot's velocity at the $i$-th instant can be represented as $(v_i, \omega_i)$.
