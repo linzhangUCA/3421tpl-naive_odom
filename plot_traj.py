@@ -78,7 +78,7 @@ for i in range(len(x)):
     ts[i] = 0.05 * i
 ax[1].plot(ts, th, ".", markersize="10")
 ax[1].plot(ts, th_hat, "+", markersize="5")
-ax[1].set_xlabel("T (s)")
+ax[1].set_xlabel("Time (s)")
 ax[1].set_ylabel("θ (radians)")
 ax[1].set_xlim([-0.25, 20.25])
 ax[1].set_ylim([-pi * 2.5, pi])
@@ -89,5 +89,6 @@ ax[1].legend(["target", "actual"])
 fig.suptitle("Trajectory Compare - Lifted", fontsize=16)
 # fig.suptitle("Trajectory Compare - Ground", fontsize=16)
 plt.show()
-### UNCOMMENT FOLLOWING LINE TO SAVE THE FIGURE, RENAME IT IF NECESSARY ###
-# plt.savefig('trajectory.png'))
+### UNCOMMENT FOLLOWING LINE TO SAVE THE FIGURE ###
+# plt.savefig('desktop_traj.png'))
+# plt.savefig('ground_traj.png'))
