@@ -13,15 +13,15 @@
 Run [vel_data_collect.py](vel_data_collect.py) to drive your robot and collect data.
 Uncomment the last 3 lines, store the target and actual velocity data on your Pico.
 
-1. (20%) Lift the wheels and have a no-load test run on desktop. Collect data and upload the saved data to [data](/data/) directory in this repository.
-2. (20%) Put the robot down on the ground to test again. Collect data and upload the saved data to [data](/data/) directory in this repository.
+1. (20%) Lift the wheels and have a no-load test on the table. Collect data and upload the saved data to [data](/data/) directory.
+2. (20%) Put the robot down on the ground to test again. Collect data and upload the saved data to [data](/data/) directory.
 
 ### 2. (60%) Calculate Trajectories
 
 Complete [plot_traj.py](plot_traj.py).
 Tackle the following requests.
 
-1. (40%) Calculate the ideal and actual robot trajectories using the collected data.
+1. (40%) Calculate the _ideal_ and _actual_ robot trajectories using the collected data.
 Code the sections wrapped between the following comments.
 
 ```python
@@ -31,13 +31,13 @@ Code the sections wrapped between the following comments.
 ```
 
 2. (20%) Plot the desktop and ground test trajectories and save them to the [images](images/) directory.
-Reveal your trajectories below.
+Then reveal the uploaded trajectory images below.
 
-#### Desktop Test Trajectory
+#### Noload Test Trajectory
 
-![desktop_traj](images/desktop_traj.png)
+![noload_traj](images/noload_traj.png)
 
-#### Desktop Test Trajectory
+#### Ground Test Trajectory
 
 ![ground_traj](images/ground_traj.png)
 
@@ -56,9 +56,9 @@ The Global frame will be generated according to the initial pose of the robot. T
 
 ### Robot's State of Motion
 
-- The robot's motion will be restricted in the two dimensional $`\{X, Y\}`$ plane.
 - The robot will start moving at the moment of $t_0$, and end the motion at the instant of $t_T$.
 - The robot's state will be examined every $\Delta t$ seconds, hence the $i$-th instant $t_i = t_{i-1} + \Delta t$ (where $`i \in \{ 1, 2, \dots, T \}`$).
+- The robot's motion will be restricted in the two dimensional $`\{X, Y\}`$ plane.
 - The robot's pose at the $i$-th instant can be represented as $(X_i, Y_i, \theta_i)$ referring to the global frame.
 $\theta_i$ is the angle from $X$ to $x$, with counterclockwise to be the positive direction.
 - The robot's velocity at the $i$-th instant can be represented as $(v_i, \omega_i)$.
@@ -73,7 +73,7 @@ $\omega_i$ is positive if the direction is counterclockwise.
 
 ![odom_frame](images/odom_frame.png)
 
-At instant $t_i$, the change of the robot's pose can be calculated *approximately* as:
+At instant $t_i$, the change of the robot's pose can be calculated _approximately_ as:
 
 ```math
 \Delta X_i = v_i \cos \theta_i \Delta t
@@ -104,4 +104,4 @@ Y_{i+1} = Y_i + \Delta Y_i
 
 ## AI Policies
 
-Please acknowledge AI's contributions follow the policies in the syllabus.
+Please acknowledge AI's contributions according to the policies in the [syllabus](https://linzhanguca.github.io/_docs/robotics2-2025/syllabus.pdf).
