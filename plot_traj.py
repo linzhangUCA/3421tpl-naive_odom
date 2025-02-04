@@ -85,10 +85,9 @@ ax[1].set_ylim([-pi * 2.5, pi])
 ax[1].grid()
 ax[1].legend(["target", "actual"])
 # Title
-### CHOOSE APPROPRIATE TITLE FROM FOLLOWING 2 LINES ###
-fig.suptitle("Trajectory Compare - Lifted", fontsize=16)
+### CHOOSE APPROPRIATE TITLE ###
+fig.suptitle("Trajectory Compare - Noload", fontsize=16)
+plt.savefig("noload_traj.png")
 # fig.suptitle("Trajectory Compare - Ground", fontsize=16)
+# plt.savefig("ground_traj.png")
 plt.show()
-### UNCOMMENT FOLLOWING LINE TO SAVE THE FIGURE ###
-# plt.savefig('desktop_traj.png'))
-# plt.savefig('ground_traj.png'))
